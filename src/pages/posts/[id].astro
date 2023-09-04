@@ -1,38 +1,12 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { store } from '../store';
+import Layout from '../../layouts/Layout.astro';
 
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const name = data.get("name");
-    console.log(name, "name")
-
-    store.push(name)
-    return Astro.redirect(`/posts/${name}`)
-    // Do something with the data
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
-
+const { id } = Astro.params
 ---
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome to Posts!">
 	<main class="flex justify-center align-center flex-col">
-		<h1>Welcome to <span class="text-gradient">Astphro</span></h1>
-		<p class="instructions">
-			To get started, please deploy this application and see if it works.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-    <form method="POST" class="flex justify-center align-center flex-row">
-      <input name="name" type="text" class="text-black" />
-      <button class="ml-4 p-4 border-2 border-white rounded-md" type="submit">Click me!</button>
-    </form>
-    <ul class="text-center text-5xl">
-    {store.map((link) => <li><a href=`/posts/${link}`><span class="text-gradient">{link}</span></a></li>)}
-    </ul>
+		<h1>Welcome to <span class="text-gradient">{id}</span></h1>
+    <a class="instructions ml-auto mr-auto" href="/">Home time!</a>
 	</main>
 </Layout>
 
