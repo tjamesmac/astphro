@@ -1,0 +1,27 @@
+---
+const { posts } = Astro.props;
+---
+
+<ul class="text-4xl">
+  {
+    posts.map(({ name }) => {
+      return (
+        <li class="border border-slate-300 rounded-md p-4 my-4 shadow">
+          <a href={`/posts/${name}`}>
+            <span class="text-gradient">{`${name} >`}</span>
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>
+
+<style>
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+</style>

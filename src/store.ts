@@ -1,6 +1,9 @@
+export const store = new Map()
 
-export const store = ['cool', 'hello'];
+store.set('1', { name: 'cool', paths: [] })
+store.set('2', { name: 'test', paths: [] })
+store.set('3', { name: 'hello', paths: [] })
 
-// store.set('1', 'cool')
-// store.set('2', 'hello')
-// store.set('2', 'world')
+
+export const photo_store = new Map()
+
